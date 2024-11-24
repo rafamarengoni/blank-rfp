@@ -37,3 +37,12 @@ def summarize_text(text, max_length=130, min_length=30):
         do_sample=False,
     )
     return summary[0]["summary_text"]
+
+def generate_contextual_summary(text, context):
+    """Use GPT models to generate section-specific summaries."""
+    from transformers import pipeline
+    summarizer = pipeline("text-generation", model="gpt-3.5-turbo")
+    prompt = f"Summarize the following text for {context}: {text}"
+    result = summarizer(prompt, max_length=150, min_length=50, do_sample=False)
+    return result[0]["generated_text"]
+

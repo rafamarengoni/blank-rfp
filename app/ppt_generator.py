@@ -3,6 +3,15 @@ from pptx.util import Pt, Inches
 from pptx.dml.color import RGBColor
 import io
 
+import streamlit as st
+
+# Dashboard for presentation customization
+st.sidebar.header("Customize Presentation")
+theme = st.sidebar.selectbox("Select Theme", ["Corporate", "Modern", "Minimal"])
+slide_order = st.sidebar.multiselect("Slide Order", ["Title", "Goals", "Deliverables", "Timeline"], default=["Title", "Goals"])
+custom_colors = st.sidebar.color_picker("Pick a Slide Background Color", "#0070C0")
+
+
 def generate_pptx(details):
     """Generate a PowerPoint presentation from RFP details."""
     prs = Presentation()
