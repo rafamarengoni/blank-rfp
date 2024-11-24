@@ -7,7 +7,7 @@ st.title("RFP to PowerPoint Generator")
 st.write("Upload an RFP PDF, extract key sections, and generate a professional PowerPoint.")
 
 uploaded_file = st.file_uploader("Upload an RFP PDF", type=["pdf"])
-
+#esse tá certo
 if uploaded_file:
     rfp_text = extract_text_from_pdf(uploaded_file)
     st.text_area("Extracted RFP Text", value=rfp_text, height=300)
