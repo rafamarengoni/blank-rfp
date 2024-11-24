@@ -2,7 +2,6 @@ import streamlit as st
 from pdf_utils import extract_text_from_pdf
 from nlp_utils import extract_key_details, summarize_text
 from ppt_generator import generate_pptx
-from fpdf import FPDF
 
 st.title("RFP to PowerPoint Generator")
 st.write("Upload an RFP PDF, extract key sections, and generate a professional PowerPoint.")
@@ -26,13 +25,3 @@ if uploaded_file:
             file_name="RFP_Response_Presentation.pptx",
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
-
-def export_as_pdf(content):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    pdf.multi_cell(0, 10, content)
-    buffer = io.BytesIO()
-    pdf.output(buffer)
-    buffer.seek(0)
-    return buffer
